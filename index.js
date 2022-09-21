@@ -6,6 +6,10 @@ const app = express()
 app.set('view engine', 'pug')
 app.set('views', './views')
 
+// Carpeta pública
+
+app.use( express.static('public') )
+
 // routing
 app.use('/auth', usuarioRoutes)
 // definir un puerto y arrancar el proyectot
