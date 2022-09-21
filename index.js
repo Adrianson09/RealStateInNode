@@ -1,5 +1,7 @@
-const express = require('express');
-const res = require('express/lib/response');
+// const express = require('express'); 
+import express from 'express'
+
+// const res = require('express/lib/response');
 
 // Crear la app
 
