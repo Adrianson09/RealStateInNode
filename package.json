@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./index.js",
     "server": "nodemon index.js",
-    "css": "postcss public/css/tailwind.css -o public/css/app.css"
+    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch"
   },
   "keywords": [
     "MVC",

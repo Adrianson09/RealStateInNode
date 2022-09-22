@@ -1,2 +1,24 @@
-div
-    h2.text-center Inicia Sesión     
+extends ../../layout/index
+
+block contenido
+    div.py-10
+    h1.text-4xl.my-10.font-extrabold.text-center Caribe
+        span.font-normal Hospitality
+    h2.text-center.text-3xl.font-bold= pagina    
+
+    .mt-8.mx-auto.max-w-md
+        .bg-white.py-8.px-4.shadow
+         form.space-y-5
+        
+            div 
+                label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="email") Email
+                input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Email" type="email" name="email")
+            div 
+                label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="password") Password
+                input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Password" type="password" name="password")
+           
+            div(class=" flex items-center justify-between")
+                a.text-gray-500.text-xs(href="/auth/registro") ¿No tiene cuenta? Regístrese     
+                a.text-gray-500.text-xs(href="/auth/olvide-password") Olvidé mi Password 
+
+            input(class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-md font-bold cursor-pointer" type="submit" value="Iniciar Sesión")    
