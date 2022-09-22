@@ -8,7 +8,7 @@ block contenido
 
     .mt-8.mx-auto.max-w-md
         .bg-white.py-8.px-4.shadow
-         form.space-y-5
+         form.space-y-5(method="POST" action="/auth/registro")
             div 
                 label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombre") Nombre
                 input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre" type="text" name="nombre")
