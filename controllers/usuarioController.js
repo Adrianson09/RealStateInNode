@@ -57,7 +57,15 @@ const registrar = async (req, res) => {
             }
         })
     }
-    console.log(existeUsuario)
+    
+    // almacenar un usuario
+
+    await Usuario.create({
+        nombre,
+        email,
+        password,
+        token: 123
+    })
 
  
 }
