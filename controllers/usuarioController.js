@@ -16,8 +16,8 @@ const registrar = async (req, res) => {
 // validation 
     await check('nombre').notEmpty().withMessage('El nombre es Obligatorio').run(req)
     await check('email').isEmail().withMessage('Eso no parece un Email').run(req)
-    await check('password').isLength({ min: 8 }).withMessage('El password debe ser de al menos 8 caracteres').run(req)
-    await check('repetir-password').equals('password').withMessage('Los passwords no son iguales').run(req)
+    await check('password').isLength({ min: 8 }).withMessage('El password debe ser de al menos 6 caracteres').run(req)
+    await check('repetir_password').equals(req.body.password).withMessage('Los passwords deben ser iguales').run(req)
 
 
     let resultado = validationResult(req)
@@ -30,7 +30,11 @@ const registrar = async (req, res) => {
         // Errores
         return res.render('auth/registro', {
             pagina: 'Crear Cuenta',
-            errores: resultado.array()
+            errores: resultado.array(),
+            usuario: {
+                nombre: req.body.nombre,
+                email: req.body.email
+            }
         })
     }
 
