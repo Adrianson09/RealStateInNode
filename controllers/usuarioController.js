@@ -1,6 +1,8 @@
 import { check, validationResult } from 'express-validator'
 import Usuario from '../models/Usuario.js'
 import { generarId } from '../helpers/tokens.js'
+import { emailRegistro } from '../helpers/emails.js'
+
 
 const formularioLogin = (req, res) => {
     res.render('auth/login', {
@@ -61,21 +63,42 @@ const registrar = async (req, res) => {
     
     // almacenar un usuario
 
-    await Usuario.create({
+    const usuario = await Usuario.create({
         nombre,
         email,
         password,
         token: generarId()
     })
 
+    // envia email de confirmacion
+        emailRegistro({
+            nombre: usuario.nombre,
+            email: usuario.email,
+            token: usuario.token
+        })
+
+
     // Mostrar Mensaje de confirmación 
     res.render('templates/mensaje', {
         pagina: 'Cuenta Creada Correctamente',
         mensaje: 'Hemos Enviado un Email de confirmación'
     })
-
- 
 }
+
+// funcion para confirmar cuenta 
+const confirmar = (req, res) => {
+
+    const { token } = req.params;
+
+   console.log(token) 
+
+//    verificar la cuenta
+
+//  confirmar la cuenta 
+
+   
+}
+
 
 const formularioOlvidePassword = (req, res) => {
     res.render('auth/olvide-password', {
@@ -87,5 +110,6 @@ export {
     formularioLogin, 
     formularioRegistro,
     registrar,
+    confirmar,
     formularioOlvidePassword
 }

@@ -27,7 +27,7 @@ app.use( express.static('public') )
 // routing
 app.use('/auth', usuarioRoutes)
 // definir un puerto y arrancar el proyectot
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`EL servidor está funcionando en el puerto ${port}`)
